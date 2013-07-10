@@ -1,0 +1,19 @@
+{
+  "name": "alarmclock",
+  "version": "0.0.1",
+  "description": "Simple google calendar based alarm clock",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.knut.me:luzifer/alarmclock.git"
+  },
+  "author": "Knut Ahlers <knut@ahlers.me>",
+  "license": "BSD",
+  "dependencies": {
+    "googleapis": "~0.2.12-alpha",
+    "coffee-script": "~1.6.3"
+  }
+}
