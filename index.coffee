@@ -1,4 +1,5 @@
 googleapis = require('googleapis')
+dateformat = require('dateformat')
 settings = require('./settings')
 
 next_event = null
@@ -8,8 +9,9 @@ fetch_next_event = () ->
     params =
       'calendarId': settings.calendar_id
       'orderBy': 'startTime'
-      'timeMin': '2013-07-10T20:29:00Z'
+      'timeMin': dateformat(new Date(), 'isoDateTime') + 'Z'
       'singleEvents': true
+      'maxResults': 10
       'key': settings.api_key
     client.calendar.events.list(params).execute (err, response) =>
       if response.items
