@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.knut.me:luzifer/alarmclock.git"
+    "url": "git@github.com:Luzifer/alarmclock.git"
   },
   "author": "Knut Ahlers <knut@ahlers.me>",
   "license": "BSD",
