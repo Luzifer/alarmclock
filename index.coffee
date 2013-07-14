@@ -28,8 +28,9 @@ fetch_next_event = () ->
 
           if n_date > i_date
             n = item
-        next_event = n
-        console.log "Found next wake event on #{next_event.start.dateTime}"
+        if next_event == null or next_event.id != n.id
+          next_event = n
+          console.log "Found next wake event on #{next_event.start.dateTime}"
       else
         console.log 'No events could be found. Cache remains empty.'
         next_event = null
