@@ -1,4 +1,8 @@
 {
   "calendar_id": "",
-  "api_key": ""
+  "api_key": "",
+  "youtube_urls": [
+    "http://www.youtube.com/watch?v=4JbYRRakG9I",
+    "http://www.youtube.com/watch?v=gg5RwFL4F_w"
+  ]
 }
