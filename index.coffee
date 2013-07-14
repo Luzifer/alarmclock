@@ -6,6 +6,13 @@ settings = require('./settings')
 next_event = null
 last_alarm = null
 
+debug = (message) ->
+  if not settings.debug
+    return
+
+  date = dateformat new Date()
+  console.log "[#{date}] #{message}"
+
 fetch_next_event = () ->
   googleapis.discover('calendar', 'v3').execute (err, client) ->
     params =
@@ -30,9 +37,9 @@ fetch_next_event = () ->
             n = item
         if next_event == null or next_event.id != n.id
           next_event = n
-          console.log "Found next wake event on #{next_event.start.dateTime}"
+          debug "Found next wake event on #{next_event.start.dateTime}"
       else
-        console.log 'No events could be found. Cache remains empty.'
+        debug 'No events could be found. Cache remains empty.'
         next_event = null
 
 wake_next_event = () ->
@@ -41,10 +48,10 @@ wake_next_event = () ->
   sound = settings.youtube_urls[Math.floor(Math.random() * settings.youtube_urls.length)]
   if event_date < now and last_alarm != next_event.id
     last_alarm = next_event.id
-    console.log "Starting playback of #{sound}"
+    debug "Starting playback of #{sound}"
     player = spawn './player.sh', [sound]
     player.on 'close', (code) =>
-      console.log "Playback of #{sound} finished."
+      debug "Playback of #{sound} finished."
       fetch_next_event()
 
 fetch_next_event()
