@@ -54,6 +54,11 @@ wake_next_event = () ->
       debug "Playback of #{sound} finished."
       fetch_next_event()
 
+reload_configuration = () ->
+  debug "Reloading configuration to refresh playlist"
+  settings = require('./settings')
+
 fetch_next_event()
 setInterval fetch_next_event, 5 * 60 * 1000
 setInterval wake_next_event, 5 * 1000
+setInterval reload_configuration, 5 * 60 * 1000
