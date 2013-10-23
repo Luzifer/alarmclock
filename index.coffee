@@ -2,6 +2,7 @@ googleapis = require('googleapis')
 dateformat = require('dateformat')
 spawn = require('child_process').spawn
 settings = require('./settings')
+get = require 'get'
 
 next_event = null
 last_alarm = null
@@ -53,6 +54,8 @@ wake_next_event = () ->
     player.on 'close', (code) =>
       debug "Playback of #{sound} finished."
       fetch_next_event()
+    for http_url in settings.http_urls
+      get(http_url).perform (err, response) ->
 
 reload_configuration = () ->
   debug "Reloading configuration to refresh playlist"
